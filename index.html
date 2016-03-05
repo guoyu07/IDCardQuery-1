@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>身份证查询</title>
+    <style>
+        .showResult{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="idCardQuery">
+        <label>输入身份证号：</label>
+        <span>
+            <input type="text">
+            <button>查询</button>
+        </span>
+    </div>
+    <div class="showResult">
+        <table>
+            <tr>
+                <td>身份证号</td>
+                <td id="numIDCard"></td>
+            </tr>
+            <tr>
+                <td>性别</td>
+                <td id="sex"></td>
+            </tr>
+            <tr>
+                <td>出生日期</td>
+                <td id="bithday"></td>
+            </tr>
+            <tr>
+                <td>地址</td>
+                <td id="address"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
