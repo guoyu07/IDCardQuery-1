@@ -6,6 +6,8 @@
  */
 namespace libs;
 
+use libs\config;
+
 class httpRequest{
 
     const BAIDU_API = 'http://apis.baidu.com/apistore/idservice/id';
@@ -30,7 +32,7 @@ class httpRequest{
          */
         $ch = curl_init();
         $header = array(
-            'apikey: 你自己的apikey',
+            config::$YOUR_BAIDU_APIKEY,
         );
         // 添加apikey到header
         curl_setopt($ch, CURLOPT_HTTPHEADER  , $header);
