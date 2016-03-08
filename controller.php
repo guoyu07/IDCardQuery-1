@@ -18,6 +18,7 @@ $response = null;
 if($request['errNum']==0){
     $response['code'] = 200;
     $response['msg'] = $request['retData'];
+    $response['provider'] = $request['provider'];
 }
 //返回json 格式
 echo json_encode($response);

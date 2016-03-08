@@ -31,6 +31,7 @@ ID_QUERY.dataCallback= function(data){
         $('#sex').text(sex);
         $('#bithday').text(data.msg.birthday);
         $('#address').text(data.msg.address);
+        $('#provider').text(data.provider);
         $('#showResult').show();
     }else{
         alert('查询失败');
