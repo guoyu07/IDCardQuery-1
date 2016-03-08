@@ -7,17 +7,36 @@
 namespace app;
 
 use libs\httpRequest;
+use libs\useRedis;
 
 class QueryIDCard
 {
+    const ID_INFO = 'ID_INFO';
+
     public static function query($num_IDCard)
     {
+        $res = null;
        if(self::verifyID($num_IDCard))
        {
-           $response = httpRequest::request (['id'=>$num_IDCard]);
-           var_dump($response);
+           $id_in_db = sprintf(self::ID_INFO.'-%s',$num_IDCard);
+           $connect = useRedis::getRedis()->get($id_in_db);
+           IF($connect)
+           {
+               $res = json_decode($connect,true);
+               $res['provider'] = '来自数据库';
+           }else
+           {
+               $res = httpRequest::request (['id'=>$num_IDCard]);
+               if(self::verifyID($num_IDCard))
+                   useRedis::getRedis()->set($id_in_db,json_encode($res));
+               // 把json类型变为array类型，后期可以把这小块优化下
+//               var_dump($res);
+               $res = (array)$res;
+//               var_dump($res);
+               $res['provider'] = '来自第三方网络';
+           }
        }
-
+        return $res;
     }
 
     /**

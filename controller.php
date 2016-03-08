@@ -7,4 +7,4 @@
 require_once "autoload.php";
 
 use app\QueryIDCard;
-QueryIDCard::query("420984198704207896");
+print_r(QueryIDCard::query("420984198704207896")) ;
