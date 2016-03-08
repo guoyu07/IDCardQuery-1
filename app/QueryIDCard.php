@@ -19,10 +19,10 @@ class QueryIDCard
        if(self::verifyID($num_IDCard))
        {
            $id_in_db = sprintf(self::CACHE_INFO.'-%s',$num_IDCard);
-           $connect = useRedis::getRedis()->get($id_in_db);
-           IF($connect)
+           $get_data_db = useRedis::getRedis()->get($id_in_db);
+           IF($get_data_db)
            {
-               $res = json_decode($connect,true);
+               $res = json_decode($get_data_db,true);
                $res['provider'] = '来自数据库';
            }else
            {
