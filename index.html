@@ -13,16 +13,12 @@
     <div class="idCardQuery">
         <label>输入身份证号：</label>
         <span>
-            <input type="text">
-            <button>查询</button>
+            <input type="text" id="num_ID_card">
+            <button id="queryBtn">查询</button>
         </span>
     </div>
-    <div class="showResult">
+    <div id="showResult">
         <table>
-            <tr>
-                <td>身份证号</td>
-                <td id="numIDCard"></td>
-            </tr>
             <tr>
                 <td>性别</td>
                 <td id="sex"></td>
@@ -37,5 +33,19 @@
             </tr>
         </table>
     </div>
+
+    <script src="static/js/jquery-1.12.1.min.js"></script>
+    <script src="static/js/queryIDCard.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            $('#showResult').hide();
+            $('#queryBtn').click(function(){
+                var id = $('#num_ID_card').val();
+                ID_QUERY.ajax('controller.php',{numIDcard:id},ID_QUERY.dataCallback);
+            });
+        });
+
+    </script>
 </body>
 </html>
