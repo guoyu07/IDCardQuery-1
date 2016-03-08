@@ -3,11 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>身份证查询</title>
-    <style>
-        .showResult{
-            display: none;
-        }
-    </style>
 </head>
 <body>
     <div class="idCardQuery">
@@ -41,15 +36,13 @@
     <script src="static/js/jquery-1.12.1.min.js"></script>
     <script src="static/js/queryIDCard.js"></script>
     <script>
-
         $(document).ready(function(){
             $('#showResult').hide();
             $('#queryBtn').click(function(){
                 var id = $('#num_ID_card').val();
-                ID_QUERY.ajax('controller.php',{numIDcard:id},ID_QUERY.dataCallback);
+                ID_QUERY.ajax('controller.php',{id_post:id},ID_QUERY.dataCallback);
             });
         });
-
     </script>
 </body>
 </html>

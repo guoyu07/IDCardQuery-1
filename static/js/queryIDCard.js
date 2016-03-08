@@ -34,7 +34,7 @@ ID_QUERY.dataCallback= function(data){
         $('#provider').text(data.provider);
         $('#showResult').show();
     }else{
-        alert('查询失败');
+        alert(data.msg);
         $('#showResult').hide();
     }
 };
