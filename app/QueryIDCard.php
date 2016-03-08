@@ -11,14 +11,14 @@ use libs\useRedis;
 
 class QueryIDCard
 {
-    const ID_INFO = 'ID_INFO';
+    const CACHE_INFO = 'ID_INFO';
 
     public static function query($num_IDCard)
     {
         $res = null;
        if(self::verifyID($num_IDCard))
        {
-           $id_in_db = sprintf(self::ID_INFO.'-%s',$num_IDCard);
+           $id_in_db = sprintf(self::CACHE_INFO.'-%s',$num_IDCard);
            $connect = useRedis::getRedis()->get($id_in_db);
            IF($connect)
            {
