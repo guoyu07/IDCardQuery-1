@@ -56,8 +56,7 @@ class QueryIDCard
      */
     public static function verifyID($num_IDCard){
        if(preg_match('/^\d{18}/',$num_IDCard))
-            if(verifyID_from_python$num_IDCard))
-                return true;
+            return self::verifyID($num_IDCard);
         else
             return false;
     }
