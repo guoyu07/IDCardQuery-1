@@ -9,6 +9,16 @@ namespace app;
 use libs\httpRequest;
 use libs\useRedis;
 
+function verifyID_from_python($id_num)
+{
+  $cmd = 'python verifyID.py'.' '.$id_num;
+  $output =  exec($cmd);
+  if($output == 'True')
+    return true;
+  else
+    return false;
+}
+
 class QueryIDCard
 {
     const CACHE_INFO = 'ID_INFO';
@@ -46,7 +56,8 @@ class QueryIDCard
      */
     public static function verifyID($num_IDCard){
        if(preg_match('/^\d{18}/',$num_IDCard))
-           return true;
+            if(verifyID_from_python$num_IDCard))
+                return true;
         else
             return false;
     }
